@@ -1,10 +1,14 @@
 import { NextPage } from "next";
-
+import Login from '../components/Login';
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <p>Hello Next.js</p>
-    </div>
+    
+    <>
+      <Login />
+    </>
+
   );
 }
+
+export default Home;
