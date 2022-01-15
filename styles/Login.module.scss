@@ -1,0 +1,136 @@
+
+.login_container {
+
+    height: 100vh;
+    width: 100%;
+
+    padding-right: 20rem;
+
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+.login_title {
+
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+
+}
+
+.field {
+
+    width: 100%;
+    position: relative;
+
+    border-bottom: 2px dashed var(--text-color);
+
+    margin: 3rem auto 1rem;
+
+}
+
+.label {
+    color: var(--text-color);
+    font-size: 1.3rem;
+    position: absolute;
+    padding-left: 1rem;
+}
+
+.input {
+
+    outline: none;
+    border: none;
+    overflow: hidden;
+    margin: 0;
+    width: 100%;
+
+    padding: 0.5rem 0;
+    background: none;
+    color: #2d3436;
+
+    font-size: 1.2rem;
+    font-weight: bold;
+
+}
+
+.input:valid {
+    color: #55efc4;
+}
+
+.input:invalid {
+    color: #ff7675
+}
+
+.password_strength {
+    display: flex;
+    height: 20px;
+    width: 100%;
+}
+
+.bar {
+    margin-right: 5px;
+    height: 100%;
+    width: 25%;
+    transition: box-shadow 0.5s;
+    box-shadow: inset 0px 20px #34393a;
+}
+
+.bar_show {
+    box-shadow: none;
+}
+
+.bar_1 {
+    background: linear-gradient(to right, #d63031, #e17055);
+}
+
+.bar_2 {
+    background: linear-gradient(to right, #e17055, #fdcb6e);
+}
+
+.bar_3 {
+    background: linear-gradient(to right, #fdcb6e, #b9c679);
+}
+
+.bar_4 {
+    background: linear-gradient(to right, #b9c679, #00b894);
+}
+
+// Do fancy animations
+.field::after {
+    content: '';
+
+    position: relative;
+    display: block;
+
+    height: 4px;
+    width: 100%;
+
+    background: linear-gradient(to right, #55efc4, #2d3436);
+
+    transform: scaleX(0);
+    transform-origin: 0%;
+    transition: transform 0.5s ease;
+
+    top: 2px;
+
+}
+
+.field:focus-within {
+    border-color: transparent;
+}
+
+.field:focus-within::after {
+    transform: scaleX(1);
+}
+
+
+.list {
+
+    font-size: small;
+
+}
+
+
+
