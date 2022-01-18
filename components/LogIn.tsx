@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { VscError } from "react-icons/vsc";
 import { FaCheck, FaTimes, FaEye,  FaEyeSlash} from "react-icons/fa";
+import Head from "next/head";
 
 
 const SignIn: NextPage = () => {
@@ -90,6 +91,12 @@ const SignIn: NextPage = () => {
 
     return (
         <>
+
+        <Head>
+            <title>RP-Tui : Login</title>
+        </Head>
+
+
             <div className={Style.login_container}>
                 <form className={Style.login_form}>
 
