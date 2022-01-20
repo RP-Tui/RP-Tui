@@ -1,10 +1,12 @@
-import { NextPage } from "next";
+import { NextPage} from "next";
+import Image from 'next'
 import Style from "../styles/Login.module.scss";	
 import { useEffect, useState } from "react";
 
 import { VscError } from "react-icons/vsc";
 import { FaCheck, FaTimes, FaEye,  FaEyeSlash} from "react-icons/fa";
 import Head from "next/head";
+import axios from "axios";
 
 
 const SignIn: NextPage = () => {
@@ -44,6 +46,24 @@ const SignIn: NextPage = () => {
         setPasswScore(score);
 
     }, [validations]);
+
+    const login = async (e: any) => {
+        e.preventDefault()
+
+        axios.post("localhost:8000/api/login", {	
+            
+            email: email,
+            password: password, 
+        }, {
+            headers: {
+                "X-Allow-Content-Origin": "*"
+            }
+        }).then(res => {
+          console.log(res)  
+        }).catch(err => {
+            console.log(err)
+        })
+    }
     
     const handleEmailChange = (email: string) => {
         setEmail(email);
@@ -92,12 +112,14 @@ const SignIn: NextPage = () => {
     return (
         <>
 
-        <Head>
-            <title>RP-Tui : Login</title>
-        </Head>
+            <Head>
+                <title>RP-Tui : Login</title>
+            </Head>
 
+            
 
             <div className={Style.login_container}>
+
                 <form className={Style.login_form}>
 
                     <div className={Style.login_title}>
@@ -131,6 +153,7 @@ const SignIn: NextPage = () => {
                         <span className={`${Style.bar} ${Style.bar_4} ${passwScore > 3 ? `${Style.bar_show}` : ""}`}></span>
 
                     </div>
+                    
                     <div className={Style.list_container}>
                         <ul className={Style.list}>
                             <li> { validations[0] ? <FaCheck/> : <FaTimes/> } must be at least 5 characters </li>
@@ -140,7 +163,7 @@ const SignIn: NextPage = () => {
                         </ul>
                     </div>
                     <div>
-                        <button className={Style.submit_btn} onClick={(e) => handleAuth(e)}>Submit</button>
+                        <button className={Style.submit_btn} onClick={(e) => login(e)}>Submit</button>
                     </div>
                 </form>
             </div>
